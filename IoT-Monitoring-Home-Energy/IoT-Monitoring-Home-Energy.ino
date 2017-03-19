@@ -4,7 +4,7 @@
 FastCRC16 CRC16;
 
 unsigned long previousMillis = 0; 
-const long interval = 3000;  
+const long interval = 2500;  
 void setup(){
   
   Serial.begin(2400);
@@ -20,15 +20,13 @@ void setup(){
 }
 
 void loop() {
-//  digitalWrite(RS485Control,RS485Receive);
+  digitalWrite(RS485Control,RS485Receive);
+  FN_serialEvent();
   unsigned long currentMillis = millis();
-
   if (currentMillis - previousMillis >= interval) {
     previousMillis = currentMillis;
     FN_Send_Code_04(Voltage);
-  }
-    FN_serialEvent();
-  
+  }  
 //   unsigned long currentMillis = millis();
 //
 //  if (currentMillis - previousMillis >= interval) {
